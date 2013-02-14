@@ -33,6 +33,11 @@
 #define PMEM_CLEAN_INV_CACHES _IOW(PMEM_IOCTL_MAGIC, 11, unsigned int)
 
 #define PMEM_ALLOCATE_ALIGNED _IOW(PMEM_IOCTL_MAGIC, 15, unsigned int)
+#define PMEM_CLEAN_CACHES _IOW(PMEM_IOCTL_MAGIC, 12, unsigned int)
+#define PMEM_INV_CACHES _IOW(PMEM_IOCTL_MAGIC, 13, unsigned int)
+
+#define PMEM_GET_FREE_SPACE _IOW(PMEM_IOCTL_MAGIC, 14, unsigned int)
+#define PMEM_ALLOCATE_ALIGNED _IOW(PMEM_IOCTL_MAGIC, 15, unsigned int)
 
 struct android_pmem_platform_data
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -63,4 +68,8 @@ struct pmem_allocation {
  unsigned int align;
 };
 
+struct pmem_freespace {
+unsigned long total;
+unsigned long largest;
+};
 #endif
