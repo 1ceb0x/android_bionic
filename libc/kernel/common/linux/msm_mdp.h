@@ -67,6 +67,7 @@
 #define MSMFB_BUFFER_SYNC _IOW(MSMFB_IOCTL_MAGIC, 162, struct mdp_buf_sync)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSMFB_DISPLAY_COMMIT _IOW(MSMFB_IOCTL_MAGIC, 164,   struct mdp_display_commit)
+#define MSMFB_METADATA_SET  _IOW(MSMFB_IOCTL_MAGIC, 162, struct msmfb_metadata)
 #define FB_TYPE_3D_PANEL 0x10101010
 #define MDP_IMGTYPE2_START 0x10000
 #define MSMFB_DRIVER_VERSION 0xF9E8D701
@@ -474,6 +475,24 @@ struct msmfb_mdp_pp {
  struct mdp_qseed_cfg_data qseed_cfg_data;
  struct mdp_bl_scale_data bl_scale_data;
  } data;
+};
+
+enum {
+	metadata_op_none,
+	metadata_op_base_blend,
+	metadata_op_max
+};
+
+struct mdp_blend_cfg {
+	uint32_t is_premultiplied;
+};
+
+struct msmfb_metadata {
+	uint32_t op;
+	uint32_t flags;
+	union {
+		struct mdp_blend_cfg blend_cfg;
+	} data;
 };
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MDP_MAX_FENCE_FD 10
